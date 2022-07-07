@@ -1,7 +1,6 @@
 # Logger Cloudwatch Structlog  
   
-Logger Cloudwatch Structlog is a Python package that contain that allows logging in an [AWS CloudWatch Log](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) compatible way using a JSON format in *serverless services in AWS* (e.g., AWS Lambda). It is easily readable by humans and machines. This library is a wrapper for structlog, you can replicate all the functionalities just using **[structlog](https://www.structlog.org/en/stable/index.html)**. We decided to make this library to make easier our   
-developments.
+Logger Cloudwatch Structlog is a Python package that contain that allows logging in an [AWS CloudWatch Log](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) compatible way using a JSON format in *serverless services in AWS* (e.g., AWS Lambda). It is easily readable by humans and machines. This library is a wrapper for structlog, you can replicate all the functionalities just using **[structlog](https://www.structlog.org/en/stable/index.html)**. We decided to make this library to make easier our developments.
   
 ## Installation and updating  
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install *Logger Cloudwatch Structlog* like below.   
