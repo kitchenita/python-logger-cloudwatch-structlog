@@ -58,14 +58,14 @@ class PasswordCensor:
     callouts (List | None, optional)
 
     Args:
-        wordlist: (Tuple | List | None, optional) Tuple with words to be censored in the event_dict, if they are
+        wordlist: (List | None, optional) List with words to be censored in the event_dict, if they are
                   present. Defaults to None.
 
     """
 
     __slots__ = ("_censor", "_wordlist")
 
-    def __init__(self, wordlist: List | Tuple = None) -> None:
+    def __init__(self, wordlist: List = None) -> None:
 
         self._wordlist = wordlist
         self._censor = _make_censor(wordlist)
@@ -82,12 +82,12 @@ class PasswordCensor:
         self._censor = _make_censor(**state)
 
 
-def _make_censor(wordlist: List | Tuple) -> Callable[[EventDict], EventDict]:
+def _make_censor(wordlist: List) -> Callable[[EventDict], EventDict]:
     """
     Create a censor function
 
     Args:
-        wordlist (Tuple | List | None): Tuple with words to be censored in the event_dict if they are present
+        wordlist (List | None): List with words to be censored in the event_dict if they are present
 
     Returns:
         Callable: Function that censor words from an EventDict.

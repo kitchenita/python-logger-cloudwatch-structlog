@@ -10,7 +10,7 @@ from logger_cloudwatch_structlog.custom_processors import AWSCloudWatchLogs, Pas
 _NOISY_LOG_SOURCES = ("boto", "boto3", "botocore")
 
 
-def setup_logging(wordlist_to_censor: List | Tuple = None,
+def setup_logging(wordlist_to_censor: List = None,
                   callouts: List = None,
                   processors: List = None,
                   serializer: Callable[..., Union[str, bytes]] = json.dumps,
@@ -21,7 +21,7 @@ def setup_logging(wordlist_to_censor: List | Tuple = None,
     Configure logging for the application.
 
     Args:
-        wordlist_to_censor: (Tuple | List | None, optional) Tuple with words to be censored in the event_dict, if they
+        wordlist_to_censor: (List | None, optional) List with words to be censored in the event_dict, if they
                             are present. Defaults to None.
         callouts: (List | None, optional) Are printed in clear-text on the front of the log line. Only the first two
                  items of this list are called out. Defaults to None.

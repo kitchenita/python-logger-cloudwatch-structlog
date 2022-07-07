@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='logger_cloudwatch_structlog',
-    version='0.0.1',
+    version='0.0.2',
     author='Kitchenita, Facundo A. Lucianna',
     author_email='facundo@kitchenita.co',
     description='Python library that allows logging in an AWS CloudWatch compatible way using a json format in '
