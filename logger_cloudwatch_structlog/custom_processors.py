@@ -3,7 +3,6 @@ from typing import List, Dict, Tuple
 from structlog.processors import _json_fallback_handler
 from structlog.types import Any, Callable, EventDict, Union, WrappedLogger
 
-
 class AWSCloudWatchLogs:
     """This class is from https://github.com/openlibraryenvironment/serverless-zoom-recordings
 
