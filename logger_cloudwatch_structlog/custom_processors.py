@@ -1,7 +1,8 @@
 import json
-from typing import List, Dict, Tuple
+from typing import List, Dict
 from structlog.processors import _json_fallback_handler
 from structlog.typing import Any, Callable, EventDict, Union, WrappedLogger
+
 
 class AWSCloudWatchLogs:
     """This class is from https://github.com/openlibraryenvironment/serverless-zoom-recordings
@@ -25,11 +26,11 @@ class AWSCloudWatchLogs:
                  **dumps_kw: Any,) -> None:
         try:
             self._callout_one_key = callouts[0]
-        except IndexError:
+        except (IndexError, TypeError):
             self._callout_one_key = None
         try:
             self._callout_two_key = callouts[1]
-        except IndexError:
+        except (IndexError, TypeError):
             self._callout_two_key = None
         dumps_kw.setdefault("default", _json_fallback_handler)
         self._dumps_kw = dumps_kw
@@ -37,17 +38,17 @@ class AWSCloudWatchLogs:
 
     def __call__(self, _, name: str, event_dict: EventDict) -> Union[str, bytes]:
         """The return type of this depends on the return type of self._dumps."""
-        if self._callout_one_key:
-            callout_one = event_dict.get(self._callout_one_key, "")
-        else:
-            callout_one = "none"
-        if self._callout_two_key:
-            callout_two = event_dict.get(self._callout_two_key, "")
-        else:
-            callout_two = "none"
-        return f'[{name.upper()}] "{callout_one}" "{callout_two}" ' + self._dumps(
-            event_dict, **self._dumps_kw
-        )
+
+        header = f'[{name.upper()}] '
+        callout_one = event_dict.get(self._callout_one_key, None)
+        callout_two = event_dict.get(self._callout_two_key, None)
+
+        if callout_one:
+            header += f'"{callout_one}" '
+        if callout_two:
+            header += f'"{callout_two}" '
+
+        return header + self._dumps(event_dict, **self._dumps_kw)
 
 
 class PasswordCensor:
