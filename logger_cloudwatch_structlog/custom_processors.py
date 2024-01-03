@@ -1,7 +1,7 @@
 import json
 from typing import List, Dict
 from structlog.processors import _json_fallback_handler
-from structlog.typing import Any, Callable, EventDict, Union, WrappedLogger
+from structlog.types import Any, Callable, EventDict, Union, WrappedLogger
 
 
 class AWSCloudWatchLogs:
